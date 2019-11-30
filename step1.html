@@ -20,11 +20,6 @@
 
         var baseball = {};
         baseball.array = ["스트라이크!", "볼!", "안타!", "아웃!"];
-        baseball.score = {
-            strike : 0,
-            ball : 0,
-            out : 0
-        }
 
         baseball.init = function () {
             init.innerHTML = "첫 번째 타자가 타석에 입장했습니다.";
@@ -34,17 +29,24 @@
             var mix = Math.floor(Math.random() * this.array.length);
             this.answer = this.array[mix];
             choice.innerHTML = this.answer;
+            this.calculateScore = function(strike, ball, out) {
+            var S = strike + "S";
+            var B = ball + "B";
+            var O = out + "O";
+            var str = S + " " + B + " " + O;
+            return str
+        }
             while(true) {
                 if (this.answer == this.array[0]) {
-                    return sign.innerHTML = ++this.score.strike + "S";
+                    return sign.innerHTML = this.calculateScore(1,0,0);
                 } else if (this.answer == this.array[1]) {
-                    return sign.innerHTML = ++this.score.ball + "B";
+                    return sign.innerHTML = this.calculateScore(0,1,0);
                 } else if (this.answer == this.array[3]) {
-                    return sign.innerHTML = ++this.score.out + "O";
+                    return sign.innerHTML = this.calculateScore(0,0,1);
                 }
             }
         }
-        
+
     </script>
 </body>
 </html>
