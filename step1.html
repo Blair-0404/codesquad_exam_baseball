@@ -32,28 +32,35 @@
             choice.innerHTML = this.answer;
             return this.answer
         }
-        baseball.getScore = function(strike, ball, out) {
+        baseball.getSign = function(strike, ball, out) {
             var S = strike;
             var B = ball;
             var O = out;
-            var str = S + "S " + B + "B " + O + "O ";
+            var str = S + "S " + B + "B " + O + "O";
             return str
         }
 
-        baseball.calculate = function() {
+        baseball.calculateScore = function() {
             while(true) {
                 if (this.getrandomValue() == this.array[0]) {
-                    return sign.innerHTML = this.getScore(1,0,0);
+                    return sign.innerHTML = this.getSign(1,0,0);
                 } else if (this.getrandomValue() == this.array[1]) {
-                    return sign.innerHTML = this.getScore(0,1,0);
+                    return sign.innerHTML = this.getSign(0,1,0);
                 } else if (this.getrandomValue() == this.array[3]) {
-                    return sign.innerHTML = this.getScore(0,0,1);
+                    return sign.innerHTML = this.getSign(0,0,1);
                 } else if (this.getrandomValue() == this.array[2]) {
-                    return sign.innerHTML = this.getScore(0,0,0);
+                    return sign.innerHTML = this.getSign(0,0,0);
                 }
             }
         }
 
+        baseball.dividescore = function() {
+            baseball.getrandomValue();
+            baseball.getSign();
+            baseball.calculateScore();
+            this.score = this.calculateScore().split(' ');
+            return this.score;
+        }
     </script>
 </body>
 </html>
