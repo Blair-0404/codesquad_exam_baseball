@@ -7,6 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>신나는 야구게임</h1>
+    <div>
+        <div id="start"></div>
+        </div>
+    </div>
+    <script>
+        //html elements
+        var init = document.getElementById('start');
+
+        var baseball = {};
+
+        baseball.init = function () {
+            init.innerHTML = "첫 번째 타자가 타석에 입장했습니다.";
+        }
+    </script>
 </body>
 </html>
