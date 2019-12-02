@@ -21,9 +21,10 @@
 
         //baseball객체 생성
         var baseball = { 
-            S : 0,
-            B : 0,
-            O : 0,
+            strike : 0,
+            ball : 0,
+            anta : 0,
+            out : 0,
         }
 
         //네가지 값을 담은 배열 메소드 생성
@@ -35,41 +36,46 @@
         }
 
         baseball.getSign = function() {
-            var str = baseball.S + "S " + baseball.B + "B " + baseball.O + "O";
-            return getsign.innerHTML = str
+            var now = this.strike + "S " + this.ball + "B " + this.out + "O";
+            return getsign.innerHTML = now
         }
 
         //baseball.array 배열 중 랜덤으로 하나의 인덱스 값 뽑을 수 있는 메소드 생성
-        baseball.getrandomValue = function () {
+        baseball.chooseOne = function () {
             var mix = Math.floor(Math.random() * this.array.length);
-            this.answer = this.array[mix];
-            getvalue.innerHTML = this.answer;
-            return this.answer
+            this.one = this.array[mix];
+            getvalue.innerHTML = this.one;
+            return this.one
         }
 
         //배열에서 랜덤값이 나올때마다 해당하는 사인이 +1되는 메소드 생성 
         baseball.calculateScore = function() {
             while(true) {
-                if (this.getrandomValue() == this.array[0]) {
-                    return ++baseball.S;
-                } else if (this.getrandomValue() == this.array[1]) {
-                    return ++baseball.B;
-                } else if (this.getrandomValue() == this.array[3]) {
-                    return ++baseball.O;
+                if (this.chooseOne() == this.array[0]) {
+                    return ++this.strike;
+                } else if (this.chooseOne() == this.array[1]) {
+                    return ++this.ball;
+                } else if (this.chooseOne() == this.array[2]) {
+                    return ++this.anta;
+                } else if (this.chooseOne() == this.array[3]) {
+                    return ++this.out;
                 }
-            }
+            } 
         }
 
-        // baseball.accrueValue = function() {
-
-        // }
-
         //배열에서 랜덤값이 나올때마다 해당하는 사인이 누적 +1되는 메소드 생성 
-        baseball.divideScore = function() {
-            baseball.getrandomValue();
+        baseball.showTotalScore = function() {
+            baseball.chooseOne();
             baseball.calculateScore();
             baseball.getSign();
         }
+
+        
+        // baseball.gameOver = function() {
+        //     var i = this.out;
+        //     for(i = 0; i <= 3; baseball.showTotalScore())
+        //     return baseball.getSign();
+        // }
     </script>
 </body>
 </html>
