@@ -26,6 +26,7 @@
             O : 0,
         }
 
+        //네가지 값을 담은 배열 메소드 생성
         baseball.array = ["스트라이크!", "볼!", "안타! 다음 타자가 타석에 입장했습니다.", "아웃! 다음 타자가 타석에 입장했습니다."]
 
         //게임 시작하면 시작을 알리는 문구가 뜨는 baseball.init 메소드 생성
@@ -33,7 +34,12 @@
             init.innerHTML = "첫 번째 타자가 타석에 입장했습니다.";
         }
 
-        // 배열 중 랜덤으로 하나의 인덱스 값 뽑을 수 있는 메소드 생성
+        baseball.getSign = function() {
+            var str = baseball.S + "S " + baseball.B + "B " + baseball.O + "O";
+            return getsign.innerHTML = str
+        }
+
+        //baseball.array 배열 중 랜덤으로 하나의 인덱스 값 뽑을 수 있는 메소드 생성
         baseball.getrandomValue = function () {
             var mix = Math.floor(Math.random() * this.array.length);
             this.answer = this.array[mix];
@@ -41,36 +47,29 @@
             return this.answer
         }
 
-        
-        baseball.getSign = function() {
-            var str = baseball.S + "S " + baseball.B + "B " + baseball.O + "O";
-            return getsign.innerHTML = str
+        //배열에서 랜덤값이 나올때마다 해당하는 사인이 +1되는 메소드 생성 
+        baseball.calculateScore = function() {
+            while(true) {
+                if (this.getrandomValue() == this.array[0]) {
+                    return ++baseball.S;
+                } else if (this.getrandomValue() == this.array[1]) {
+                    return ++baseball.B;
+                } else if (this.getrandomValue() == this.array[3]) {
+                    return ++baseball.O;
+                }
+            }
         }
 
+        // baseball.accrueValue = function() {
 
-        // //수정예정
-        // baseball.calculateScore = function() {
-        //     while(true) {
-        //         if (this.getrandomValue() == this.array[0]) {
-        //             return sign.innerHTML = this.getSign(1,0,0);
-        //         } else if (this.getrandomValue() == this.array[1]) {
-        //             return sign.innerHTML = this.getSign(0,1,0);
-        //         } else if (this.getrandomValue() == this.array[3]) {
-        //             return sign.innerHTML = this.getSign(0,0,1);
-        //         } else if (this.getrandomValue() == this.array[2]) {
-        //             return sign.innerHTML = this.getSign(0,0,0);
-        //         }
-        //     }
         // }
 
-        // //수정예정..
-        // baseball.dividescore = function() {
-        //     baseball.getrandomValue();
-        //     baseball.getSign();
-        //     baseball.calculateScore();
-        //     this.score = this.calculateScore().split(' ');
-        //     return this.score;
-        // }
+        //배열에서 랜덤값이 나올때마다 해당하는 사인이 누적 +1되는 메소드 생성 
+        baseball.divideScore = function() {
+            baseball.getrandomValue();
+            baseball.calculateScore();
+            baseball.getSign();
+        }
     </script>
 </body>
 </html>
