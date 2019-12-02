@@ -10,14 +10,16 @@
     <h1>신나는 야구게임</h1>
     <div id="start"></div>
     <br>
-    <div id="getvalue"></div>
-    <div id="getsign"></div>
+    <div id="randomvalue"></div>
+    <div id="sign"></div>
+    <div id="play"></div>
 
     <script>
         //html elements
-        var init = document.getElementById('start');
-        var getvalue = document.getElementById('getvalue');
-        var getsign = document.getElementById('getsign');
+        var start = document.getElementById('start');
+        var randomvalue = document.getElementById('randomvalue');
+        var sign = document.getElementById('sign');
+        var play = document.getElementById('play');
 
         //baseball객체 생성
         var baseball = { 
@@ -30,25 +32,25 @@
         //네가지 값을 담은 배열 메소드 생성
         baseball.array = ["스트라이크!", "볼!", "안타! 다음 타자가 타석에 입장했습니다.", "아웃! 다음 타자가 타석에 입장했습니다."]
 
-        //게임 시작하면 시작을 알리는 문구가 뜨는 baseball.init 메소드 생성
+        //게임 시작하면 시작을 알리는 문구가 뜨는 메소드 생성
         baseball.init = function () {
-            init.innerHTML = "첫 번째 타자가 타석에 입장했습니다.";
+            start.innerHTML = "첫 번째 타자가 타석에 입장했습니다.";
         }
 
         baseball.getSign = function() {
             var now = this.strike + "S " + this.ball + "B " + this.out + "O";
-            return getsign.innerHTML = now
+            return sign.innerHTML = now
         }
 
         //baseball.array 배열 중 랜덤으로 하나의 인덱스 값 뽑을 수 있는 메소드 생성
         baseball.chooseOne = function () {
             var mix = Math.floor(Math.random() * this.array.length);
             this.one = this.array[mix];
-            getvalue.innerHTML = this.one;
+            randomvalue.innerHTML = this.one;
             return this.one
         }
 
-        //배열에서 랜덤값이 나올때마다 해당하는 사인이 +1되는 메소드 생성 
+        //배열에서 랜덤값이 나올때마다 해당하는 사인도 +1되는 메소드 생성 
         baseball.calculateScore = function() {
             while(true) {
                 if (this.chooseOne() == this.array[0]) {
@@ -65,17 +67,11 @@
 
         //배열에서 랜덤값이 나올때마다 해당하는 사인이 누적 +1되는 메소드 생성 
         baseball.showTotalScore = function() {
-            baseball.chooseOne();
-            baseball.calculateScore();
-            baseball.getSign();
+            this.chooseOne();
+            this.calculateScore();
+            this.getSign();
         }
 
-        
-        // baseball.gameOver = function() {
-        //     var i = this.out;
-        //     for(i = 0; i <= 3; baseball.showTotalScore())
-        //     return baseball.getSign();
-        // }
     </script>
 </body>
 </html>
