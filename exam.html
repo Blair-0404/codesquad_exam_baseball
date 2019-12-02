@@ -14,24 +14,29 @@
     <div id="sign"></div>
 
     <script>
-        //html elements
+        //1.html elements
         var init = document.getElementById('start');
         var choice = document.getElementById('choice');
         var sign = document.getElementById('sign');
 
+        //2.baseball객체 생성 후 플레이 시작 시 나올수있는 4가지 경우의 수를 담은 배열메소드 생성
         var baseball = {};
         baseball.array = ["스트라이크!", "볼!", "안타! 다음 타자가 타석에 입장했습니다.", "아웃! 다음 타자가 타석에 입장했습니다."];
 
+        //3. 게임 시작하면 시작을 알리는 문구가 뜨는 baseball.init 메소드 생성
         baseball.init = function () {
             init.innerHTML = "첫 번째 타자가 타석에 입장했습니다.";
         }
 
+        //4. 주석2에서 생성한 배열 중 랜덤으로 하나의 인덱스 값 뽑을 수 있는 메소드 생성
         baseball.getrandomValue = function () {
             var mix = Math.floor(Math.random() * this.array.length);
             this.answer = this.array[mix];
             choice.innerHTML = this.answer;
             return this.answer
         }
+
+        //5.주석 2의 배열에 따른 사인...생성 (따로 만드는게맞는가..?)
         baseball.getSign = function(strike, ball, out) {
             var S = strike;
             var B = ball;
@@ -40,6 +45,8 @@
             return str
         }
 
+
+        //6.랜덤으로 뽑힌 값에 따라 해당 사인에만 1을 추가하는  메소드생성
         baseball.calculateScore = function() {
             while(true) {
                 if (this.getrandomValue() == this.array[0]) {
@@ -54,6 +61,7 @@
             }
         }
 
+        //
         baseball.dividescore = function() {
             baseball.getrandomValue();
             baseball.getSign();
