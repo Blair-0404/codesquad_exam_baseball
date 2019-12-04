@@ -7,7 +7,7 @@ codesquad_masters_frontend_exam
 
 
 #### <1단계 구현 코딩 설명> #
-  -크게(포괄적으로) 보면 스트라이크, 볼, 아웃, 안타 네가지가 나오는 것이고 그 각자마다 세부적인 조건들이 있다고 생각했다.
+  -크게(포괄적으로) 보면 스트라이크, 볼, 아웃, 안타 네가지가 나오는 것이고 그 각자마다 세부적인 조건들이 있다고 생각했다.<br>
    때문에 먼저 네가지 결과를 담은 점수가 0으로 초기화된 baseball.score 객체를 만들었고 
   -baseball.score객체 안의 각각의 프로퍼티들을 관리할 수 있게(=상황에 맞는 추가 조건 생성하기 위해)
    baseball.processStrike, baseball.processBall, baseball.processOut, baseball.processHit메소드들을 만들었다.
