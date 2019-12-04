@@ -18,8 +18,33 @@
             hit : 0
         }
 
-        baseball.getSign = function {
-            return this.score.strike
+        baseball.getSign = function () {
+            return this.score.strike + 'S ' + this.score.ball + 'B ' + this.score.out + 'O';
+        }
+
+        baseball.processStrike = function() {
+            console.log('스트라이크!');
+            this.score.strike++;
+        }
+
+        baseball.processBall = function() {
+            console.log('볼!');
+            this.score.ball++;
+        }
+
+        baseball.processOut = function() {
+
+        }
+
+        bar.processHit = function() {
+            console.log('안타! 다음 타자가 타석에 입장했습니다.');
+        }
+
+        baseball.playGame = function() {
+            console.log('신나는 야구 게임!');
+            console.log('첫 번째 타자가 타석에 입장했습니다.);
+
+            }
         }
     </script>
 </body>
