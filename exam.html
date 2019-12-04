@@ -35,18 +35,24 @@
                 this.processHit();
             }
         }
+        baseball.resetStrikeBallcount = function() {
+            this.score.strike = 0;
+            this.score.ball = 0;
+        }
         baseball.processOut = function() {
             var message = '아웃!';
             this.score.out++;
             if (this.score.out < 3) {
                 message += '다음 타자가 타석에 입장했습니다.';
             }
+            this.resetStrikeBallcount();
+            console.log(message);
         }
 
         bar.processHit = function() {
             console.log('안타! 다음 타자가 타석에 입장했습니다.');
             this.score.hit++;
-            
+            this.resetStrikeBallcount();
         }
 
         baseball.playGame = function() {

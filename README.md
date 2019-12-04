@@ -7,9 +7,11 @@ codesquad_masters_frontend_exam
    때문에 먼저 네가지를 담은 숫자가 0으로 초기화된 baseball.score 객체를 만들었고 
   -baseball.score객체 안의 각각의 프로퍼티들을 관리할 수 있게(상황에 맞는 추가 조건 생성하기 위해)
    baseball.processStrike, baseball.processBall, baseball.processOut, baseball.processHit메소드들을 만들었다.
-  -baseball.processStrike메소드에 strike가 3회이면 아웃이 되는 조건 추가
+  -baseball.processStrike메소드에스트라이크가 3회이면 아웃이 되는 조건 추가
    baseball.processBall메소드에 볼이 4회면 안타가 되는 조건 추가
-  -baseball.processOut메소드에 아웃이 3회가 되기 전 까지는 다음타자가 나오는 메시지를 함께 출력하라는 조건 추가
+   baseball.processOut메소드에 아웃이 3회가 되기 전 까지는 다음타자가 나오는 메시지를 함께 출력하라는 조건 추가
+  -안타or아웃이 나올경우에는 스트라이크와 볼 수를 초기화 하는 baseball.resetStrikeBallCount메소드를 생성
+
 
 
 
