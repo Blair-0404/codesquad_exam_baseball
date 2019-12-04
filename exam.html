@@ -21,23 +21,32 @@
         baseball.getSign = function () {
             return this.score.strike + 'S ' + this.score.ball + 'B ' + this.score.out + 'O';
         }
-
         baseball.processStrike = function() {
             console.log('스트라이크!');
             this.score.strike++;
+            if (this.score.strike === 3) {
+                this.processOut();
+            }
         }
-
         baseball.processBall = function() {
             console.log('볼!');
             this.score.ball++;
+            if (this.score.ball === 4) {
+                this.processHit();
+            }
         }
-
         baseball.processOut = function() {
-
+            var message = '아웃!';
+            this.score.out++;
+            if (this.score.out < 3) {
+                message += '다음 타자가 타석에 입장했습니다.';
+            }
         }
 
         bar.processHit = function() {
             console.log('안타! 다음 타자가 타석에 입장했습니다.');
+            this.score.hit++;
+            
         }
 
         baseball.playGame = function() {
