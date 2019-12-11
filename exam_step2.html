@@ -10,6 +10,17 @@
 
 <body>
     <script>
+        //Player 생성자
+        function Player(name, hitRate) {
+            this.name = name;
+            this.hitRate = hitRate;
+        }
+        //Team생성자
+        function Team(name,players) {
+            this.name = name;
+            this.players = players; //Player[]
+            
+        }
         var baseball = {}
 
         baseball.team = [];
@@ -75,6 +86,21 @@
             }
             console.log(this.getSign());
         }
+        baseball.insertDate = function (teamNumber) {
+            const name = prompt(teamNumber + '팀의 이름을 입력하세요>');
+            var count = 0;
+            var players = [];
+            while (count < 2) { //팀당 9명
+                const input = ptompt((count + 1) + '번 타자 정보 입력>').split(',');
+                const player = new Player(input[0], input[1].trim() * 1);
+                players.push(player);
+                count++;
+            }
+            const newTeam = new Team(name,players);
+            this.team.push(newTeam);
+        }
+
+
 
         baseball.selctMenu = function() {
             const select = prompt('메뉴선택(1 - 3)');
@@ -82,7 +108,6 @@
                 console.log('게임을 종료합니다.');
                 return;
             }
-        }
         switch (select) {
             case '1' : //데이터입력
             this.team = [];
@@ -90,9 +115,21 @@
                 this.insertData(number);
             }
             console.log('팀 데이터 입력이 완료되었습니다.');
-            
+            this.printInit();
+            this.selctMenu();
+            break;
+
 
         }
+        }
+        baseball.printInit = function() {
+            console.log('신나는 야구시합');
+            console.log('1. 데이터 입력');
+            console.log('2. 데이터 출력');
+            console.log('3. 시합 시작');
+        }
+        baseball.printInit();
+        baseball.selctMenu();
     </script>
 </body>
 
