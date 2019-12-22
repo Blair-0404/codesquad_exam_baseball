@@ -10,17 +10,23 @@
 
 <body>
     <script>
+        //Player 생성자
+        function Player(name, hitRate) {
+            this.name = name;
+            this.hitRate = hitRate;
+        }
+        //Team생성자
+        function Team(name,players) {
+            this.name = name;
+            this.players = players; //Player[]
+            
+        }
         var baseball = {}
-        console.log("git !!");
 
-<<<<<<< .merge_file_a13352
-         baseball
-         
-=======
         baseball.team = [];
         
->>>>>>> .merge_file_a01800
         baseball.score = {
+            inning: 1,
             strike: 0,
             ball: 0,
             out: 0,
@@ -80,17 +86,50 @@
             }
             console.log(this.getSign());
         }
-        baseball.playGame = function () {
-            console.log('신나는 야구 게임!');
-            console.log('첫 번째 타자가 타석에 입장했습니다.');
-            while (this.score.out < 3) {
-                var result = Math.floor(Math.random() * 4);
-                this.setResult(result);
+        baseball.insertDate = function (teamNumber) {
+            const name = prompt(teamNumber + '팀의 이름을 입력하세요>');
+            var count = 0;
+            var players = [];
+            while (count < 2) { //팀당 9명
+                const input = ptompt((count + 1) + '번 타자 정보 입력>').split(',');
+                const player = new Player(input[0], input[1].trim() * 1);
+                players.push(player);
+                count++;
             }
-            console.log('최종 안타수: ' + this.score.hit);
-            console.log('GAME OVER');
+            const newTeam = new Team(name,players);
+            this.team.push(newTeam);
         }
-        baseball.playGame();
+
+
+
+        baseball.selctMenu = function() {
+            const select = prompt('메뉴선택(1 - 3)');
+            if (!select) {
+                console.log('게임을 종료합니다.');
+                return;
+            }
+        switch (select) {
+            case '1' : //데이터입력
+            this.team = [];
+            for (varnumver = 1; number <= 2; ++number) {
+                this.insertData(number);
+            }
+            console.log('팀 데이터 입력이 완료되었습니다.');
+            this.printInit();
+            this.selctMenu();
+            break;
+
+
+        }
+        }
+        baseball.printInit = function() {
+            console.log('신나는 야구시합');
+            console.log('1. 데이터 입력');
+            console.log('2. 데이터 출력');
+            console.log('3. 시합 시작');
+        }
+        baseball.printInit();
+        baseball.selctMenu();
     </script>
 </body>
 
