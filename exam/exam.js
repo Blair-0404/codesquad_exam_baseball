@@ -1,5 +1,4 @@
 var baseball = {};
-console.log("git !!");
 
 baseball.team = [];
 
